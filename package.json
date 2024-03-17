@@ -1,0 +1,62 @@
+{
+  "author": "ayan4m1 <andrew@bulletlogic.com>",
+  "description": "Change OpenMoji filenames from codepoints to descriptions.",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/jsonfile": "^6.1.4",
+    "@types/node": "^20.11.28",
+    "@types/progress": "^2.0.7",
+    "@types/rollup-plugin-auto-external": "^2.0.5",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "auto-changelog": "^2.4.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "rollup": "^4.13.0",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-shebang-bin": "^0.0.6",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "lib/"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "bin": {
+    "rename-openmoji": "lib/index.js"
+  },
+  "module": "lib/index.js",
+  "name": "rename-openmoji",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayan4m1/rename-openmoji.git"
+  },
+  "scripts": {
+    "build": "rollup -c --configPlugin typescript",
+    "develop": "rollup -c -w --configPlugin typescript",
+    "lint": "eslint ./src --ext .ts",
+    "prepack": "cross-env NODE_ENV=production rollup -c --configPlugin typescript",
+    "version": "auto-changelog -p -b 10 -l 10 && git add CHANGELOG.md",
+    "prepare": "husky"
+  },
+  "type": "module",
+  "types": "lib/index.d.ts",
+  "version": "0.1.0",
+  "dependencies": {
+    "commander": "12.0.0",
+    "fast-glob": "3.3.2",
+    "jsonfile": "6.1.0",
+    "progress": "2.0.3"
+  }
+}
