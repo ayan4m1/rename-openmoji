@@ -1,13 +1,10 @@
-import fg from 'fast-glob';
+import { async as fastGlob } from 'fast-glob';
 import { existsSync } from 'fs';
-import jsonfile from 'jsonfile';
+import { readFile as readJsonFile } from 'jsonfile';
 import ProgressBar from 'progress';
 import { fileURLToPath } from 'url';
 import { readFile, rename } from 'fs/promises';
 import { basename, dirname, join, resolve } from 'path/posix';
-
-const { async: fastGlob } = fg;
-const { readFile: readJsonFile } = jsonfile;
 
 enum FileFormats {
   Png = 'PNG',

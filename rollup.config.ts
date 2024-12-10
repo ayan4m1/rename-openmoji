@@ -5,7 +5,9 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import autoExternal from 'rollup-plugin-auto-external';
 
 const plugins = [
-  autoExternal(),
+  autoExternal({
+    builtins: true
+  }),
   typescript(),
   nodeResolve(),
   shebang({
