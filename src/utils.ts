@@ -1,10 +1,16 @@
-import { async as fastGlob } from 'fast-glob';
+import fastGlob from 'fast-glob';
 import { existsSync } from 'fs';
-import { readFile as readJsonFile } from 'jsonfile';
+// eslint-disable-next-line import-x/default
+import jsonfile from 'jsonfile';
 import ProgressBar from 'progress';
 import { fileURLToPath } from 'url';
 import { readFile, rename } from 'fs/promises';
 import { basename, dirname, join, resolve } from 'path/posix';
+
+/* eslint-disable import-x/no-named-as-default-member */
+const { async } = fastGlob;
+const { readFile: readJsonFile } = jsonfile;
+/* eslint-enable import-x/no-named-as-default-member */
 
 enum FileFormats {
   Png = 'PNG',
@@ -39,7 +45,7 @@ export async function renameOpenMoji(
 
     console.log(`Loaded ${data.length} symbols from OpenMoji JSON...`);
 
-    const files = await fastGlob(join(iconDir, `*.${format.toLowerCase()}`));
+    const files = await async(join(iconDir, `*.${format.toLowerCase()}`));
 
     console.log(`Found ${files.length} OpenMoji images to rename...`);
 
